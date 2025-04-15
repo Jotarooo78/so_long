@@ -6,11 +6,11 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:13:22 by armosnie          #+#    #+#             */
-/*   Updated: 2024/12/05 12:27:16 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:51:03 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putchar(char c)
 {
@@ -56,8 +56,8 @@ int	ft_unsigned_putnbr_base(unsigned long n, char *base, int baselen)
 	size_t	count;
 
 	count = 0;
-	if (n >= baselen)
-		count += ft_unsigned_putnbr_base(n / baselen, base, baselen);
+	if (n >= (unsigned long)baselen)
+		count += ft_unsigned_putnbr_base((unsigned long)n / baselen, base, baselen);
 	count += ft_putchar(base[n % baselen]);
 	return (count);
 }
