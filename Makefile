@@ -2,7 +2,8 @@ NAME = so_long
 
 CC = cc
 
-SRC = src/main.c
+SRC = src/main.c src/errors.c
+
 INCLUDES = includes/so_long.h
 
 LIBX_DIR = libx
