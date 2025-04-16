@@ -8,7 +8,12 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-typedef struct s_game {
+# define EXIT_FAILURE 1
+# define WDW_WIDTH 800
+# define WDW_HEIGHT 600
+
+typedef struct s_game
+{
     char    **map;
     int     width;
     int     height;
@@ -17,6 +22,13 @@ typedef struct s_game {
     int     count_c;
 } t_game;
 
+typedef struct s_mlx
+{
+    void    *window;
+    void    *mlx;
+    char    *file;
+
+} t_mlx;
 int	ft_error(char *str, int code_error);
 
 
