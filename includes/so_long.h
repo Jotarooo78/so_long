@@ -19,6 +19,9 @@ typedef struct s_game
 	void	*mlx_win;
 }			t_game;
 
+bool  check_map(char **map, int size);
+void    print_map(t_game *mlxs);
+bool	init_map(t_game *mlxs, char *filename);
 void		free_array(char **array);
 int			ft_error(char *str, int code_error);
 

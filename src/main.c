@@ -3,17 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/16 17:50:30 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:28:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+void    print_map(t_game *mlxs)
+{
+    int i = 0;
+    
+    while (mlxs->map[i])
+    {
+        printf("%s", mlxs->map[i]);
+        i++;
+    }
+}
 
-bool    check_ext(char *file)
+bool    check_extention(char *file)
 {
     int len;
 
@@ -27,8 +37,6 @@ bool    check_ext(char *file)
 
 bool    init_mlx_data(t_game *mlxs)
 {
-    char	**map = NULL;
-
     mlxs->mlx = mlx_init();
     if (mlxs->mlx == NULL)
     {
@@ -54,11 +62,14 @@ int main(int argc, char **argv)
 
     if (argc == 2)
     {
-        if ((check_ext(argv[1]) == false) || (argv[1] == NULL) || (argv[1][0] = NULL))
-            ft_error("invalid map format\n", 1);
-        if (init_mlx_data(mlxs) == 0)
-            return (1);
+        if ((check_extention(argv[1]) == false) || (argv[1] == NULL))
+            return (ft_putstr_fd("invalid map format\n", 2), 1);
+        mlxs = malloc(sizeof(t_game));
+        if (!mlxs)
+            return (ft_putstr_fd("Failed to malloc mlxs", 2), 1);
         init_map(mlxs, argv[1]);
+        // if (init_mlx_data(mlxs) == false)
+        //     ft_error("mlxs init failed\n", 1);
         // mlx_loop(mlxs->mlx);
         return (0);
     }

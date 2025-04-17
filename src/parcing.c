@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parcing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/16 17:56:15 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:35:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,40 @@ int	grid_size(int fd)
 	char	*len;
 	int		count;
 
-	count = 1;
+	count = 0;
 	len = get_next_line(fd);
 	while (len != NULL)
 	{
 		free(len);
-		len = get_next_line(fd);
 		count++;
+		len = get_next_line(fd);
 	}
 	close(fd);
 	return (count);
 }
 
-char	**fill_map(char *filename, int size, int fd)
+char	**fill_map(char **map, int size, int fd)
 {
-	char	**map;
 	char	*line;
 	int		i;
 
 	i = 0;
-	line = get_next_line(fd);
-	while (line != NULL)
+	while (i < size)
 	{
+		line = get_next_line(fd);
+		if (line == NULL)
+		{
+			free_array(map);
+			return (NULL);
+		}
 		map[i] = ft_strdup(line);
+		free(line);
 		if (map[i] == NULL)
 		{
 			free_array(map);
 			return (NULL);
 		}
-		free(line);
 		i++;
-		line = get_next_line(fd);
 	}
 	map[i] = NULL;
 	close(fd);
@@ -56,21 +59,23 @@ char	**fill_map(char *filename, int size, int fd)
 
 bool	init_map(t_game *mlxs, char *filename)
 {
-	char	**map;
 	int		size;
 	int		fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (false);
+		return (ft_putstr_fd("invalid fd 1\n", 2), false);
 	size = grid_size(fd);
-	map = malloc(sizeof(char *) * (size + 1));
-	if (map == NULL)
-		return (false);
+	mlxs->map = malloc(sizeof(char *) * (size + 1));
+	if (mlxs->map == NULL)
+		return (ft_putstr_fd("map malloc failed\n", 2), false);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (false);
-	map = fill_map(filename, size, fd);
-    mlxs->map = map;
-    check_map(mlxs);
+		return (ft_putstr_fd("invalid fd 2\n", 2), false);
+	mlxs->map = fill_map(mlxs->map, size, fd);
+	if (!mlxs->map)
+		return (ft_putstr_fd("map doesn't exist\n", 2), false);
+	if (check_map(mlxs->map, size) == false)
+		return (ft_putstr_fd("invalid map\n", 2), false);
+	return (true);
 }
