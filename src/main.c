@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/17 18:28:05 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:18:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int main(int argc, char **argv)
         if (!mlxs)
             return (ft_putstr_fd("Failed to malloc mlxs", 2), 1);
         init_map(mlxs, argv[1]);
+        print_map(mlxs);
         // if (init_mlx_data(mlxs) == false)
         //     ft_error("mlxs init failed\n", 1);
         // mlx_loop(mlxs->mlx);

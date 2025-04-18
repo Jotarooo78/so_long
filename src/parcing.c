@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/17 19:35:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:50:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ bool	init_map(t_game *mlxs, char *filename)
 	if (!mlxs->map)
 		return (ft_putstr_fd("map doesn't exist\n", 2), false);
 	if (check_map(mlxs->map, size) == false)
-		return (ft_putstr_fd("invalid map\n", 2), false);
+		return (false);
 	return (true);
 }

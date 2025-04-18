@@ -12,59 +12,30 @@
 
 #include "../includes/so_long.h"
 
-bool  check_first_last_wall(char **map, int lign)
-{
-   size_t i;
-
-   i = 0;
-   while (map[lign][i] == 1 && i < ft_strlen(map[lign]))
-   {
-      if (map[lign][i] != 1)
-         return (false); 
-      i++;
-   }
-   return (true);
-}
-
-bool  check_middle_wall(char **map, int lign)
-{
-   int check;
-   size_t i;
-
-   i = 0;
-   check = 0;
-   while (map[lign][i])
-   {
-      if ((map[lign][0] == 1))
-         check++;
-      else if ((ft_strlen(map[lign]) - 1) == 1)
-         check++;
-      i++;
-   }
-   printf("%d\n", check);
-   if (check != 2)
-      return (ft_putstr_fd("invalid middle wall lign\n", 2), false);
-   return (true);
-}
-
 bool  check_wall(char **map, int size)
 {
-   int lign;
+   int y;
+   int x;
+   int len;
 
-   lign = 0;
-   while (lign < size)
+   y = 0;
+   len = ft_strlen(map[y]) - 1;
+   while (y < size)
    {
-      if (lign == 0 || lign == (size - 1))
+      if (y == 0 || y == (size - 1))
       {
-         if (check_first_last_wall(map, lign) == false)
-            return (ft_putstr_fd("invalid first or last wall lign\n", 2), false);
+         x = 0;
+         while (map[y][x + 1])
+         {
+            if (map[y][x] != '1')
+               ft_putstr_fd("invalid first or last wall\n", 2); 
+            x++;
+         }
       }
       else
-      {
-         if (check_middle_wall(map, lign) == false)
-            return (ft_putstr_fd("invalid middle wall lign\n", 2), false);
-      }
-      lign++;
+         if ((map[y][0] != '1') || (map[y][len] != '1'))
+            ft_putstr_fd("invalid middle wall\n", 2);
+      y++;
    }
    return (true);
 }
@@ -72,6 +43,6 @@ bool  check_wall(char **map, int size)
 bool  check_map(char **map, int size)
 {
    if (check_wall(map, size) == false)
-      return (ft_putstr_fd("invalid fd 1\n", 2), false);
+      return (false);
    return (0);
 }

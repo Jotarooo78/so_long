@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = cc
 
-SRC = src/main.c src/errors.c src/parcing.c src/check_map_functions.c
+SRC = src/main.c src/errors.c src/parcing.c src/check_map.c
 
 INCLUDES = includes/so_long.h
 
@@ -14,7 +14,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -fPIC -g3 -I$(LIBFT_DIR) -I$(LIBX_DIR)
+CFLAGS = -Wall -Wextra -Werror -g3 -I$(LIBFT_DIR) -I$(LIBX_DIR)
 
 LDFLAGS = -L$(LIBX_DIR) -lmlx -lX11 -lXext -lm
 
