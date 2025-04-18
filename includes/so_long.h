@@ -14,12 +14,15 @@
 
 typedef struct s_game
 {
+	int	collect;
+	int	exit;
+	int 	player;
 	char	**map;
 	void	*mlx;
 	void	*mlx_win;
 }			t_game;
 
-bool  check_map(char **map, int size);
+bool  check_map(t_game *mlxs, char **map, int size);
 void    print_map(t_game *mlxs);
 bool	init_map(t_game *mlxs, char *filename);
 void		free_array(char **array);

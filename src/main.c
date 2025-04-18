@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/18 14:18:51 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/18 17:05:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void    print_map(t_game *mlxs)
     
     while (mlxs->map[i])
     {
+        if (!mlxs->map[i])
+		{
+			printf("Invalid map line at index %d\n", i);
+			break;
+		}
         printf("%s", mlxs->map[i]);
         i++;
     }

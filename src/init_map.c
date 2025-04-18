@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/18 14:50:48 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/18 17:04:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int	grid_size(int fd)
 	len = get_next_line(fd);
 	while (len != NULL)
 	{
+		if (len[0] != '\n' && len[0] != '\0')
+			count++;
 		free(len);
-		count++;
 		len = get_next_line(fd);
 	}
+	free(len);
 	close(fd);
 	return (count);
 }
@@ -52,7 +54,7 @@ char	**fill_map(char **map, int size, int fd)
 		}
 		i++;
 	}
-	map[i] = NULL;
+	map[size] = NULL;
 	close(fd);
 	return (map);
 }
@@ -75,7 +77,7 @@ bool	init_map(t_game *mlxs, char *filename)
 	mlxs->map = fill_map(mlxs->map, size, fd);
 	if (!mlxs->map)
 		return (ft_putstr_fd("map doesn't exist\n", 2), false);
-	if (check_map(mlxs->map, size) == false)
+	if (check_map(mlxs, mlxs->map, size) == false)
 		return (false);
 	return (true);
 }
