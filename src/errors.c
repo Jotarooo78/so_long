@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:43:25 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/19 13:19:29 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/19 17:10:33 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	free_array(char **array)
 	free(array);
 }
 
-// int	ft_error(char *str, int code_error)
-// {
-// 	ft_printf(str);
-// 	return (code_error);
-// }
+int	ft_error(char *str)
+{
+	ft_printf(str);
+	exit(EXIT_FAILURE);
+}

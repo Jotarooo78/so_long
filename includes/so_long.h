@@ -11,6 +11,7 @@
 # define EXIT_FAILURE 1
 # define WDW_WIDTH 800
 # define WDW_HEIGHT 600
+# define BUFFERSIZE 4096
 
 typedef struct s_game
 {

@@ -14,7 +14,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g3 -I$(LIBFT_DIR) -I$(LIBX_DIR)
+CFLAGS = -Wall -Wextra -Werror -g -I$(LIBFT_DIR) -I$(LIBX_DIR)
 
 LDFLAGS = -L$(LIBX_DIR) -lmlx -lX11 -lXext -lm
 

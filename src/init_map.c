@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcing.c                                          :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/18 17:04:29 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/19 17:15:11 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,52 +31,70 @@ int	grid_size(int fd)
 	return (count);
 }
 
-char	**fill_map(char **map, int size, int fd)
+bool	check_double_backslash(char *tmp)
 {
-	char	*line;
-	int		i;
+	int i;
 
 	i = 0;
-	while (i < size)
+	while (tmp[i])
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-		{
-			free_array(map);
-			return (NULL);
-		}
-		map[i] = ft_strdup(line);
-		free(line);
-		if (map[i] == NULL)
-		{
-			free_array(map);
-			return (NULL);
-		}
+		if (tmp[i] == '\n' && tmp[i + 1] == '\n')
+			return (true);
 		i++;
 	}
-	map[size] = NULL;
-	close(fd);
-	return (map);
+	return (false);
+}
+
+char	*join_map(t_game *mlxs, char *str, int fd)
+{
+	char	*tmp;
+	char	*new_tmp;
+
+	tmp = ft_strdup("");
+	if (tmp == NULL)
+		return ;
+	while (str)
+	{
+		new_tmp = ft_strjoin(str, tmp);
+		if (new_tmp == NULL)
+			return (free(str), close(fd), NULL);
+		tmp = new_tmp;
+		free(str);
+		str = get_next_line(fd);
+	}
+	if (check_double_backslash(tmp) == true)
+	{
+		free(tmp);
+		ft_putstr_fd("invalid fd 1\n", 2);
+	}
+	return (tmp);
 }
 
 bool	init_map(t_game *mlxs, char *filename)
 {
 	int		size;
 	int		fd;
+	char	*str;
+	char	*tmp;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("invalid fd 1\n", 2), false);
-	size = grid_size(fd);
-	mlxs->map = malloc(sizeof(char *) * (size + 1));
+	str = get_next_line(fd);
+	tmp = join_map(mlxs, str, fd);
+	if (tmp == NULL)
+	{
+		close(fd);
+		exit(EXIT_FAILURE);
+	}
+	close(fd);
+	mlxs->map = ft_split(str, '\n');
+	free(tmp);
 	if (mlxs->map == NULL)
-		return (ft_putstr_fd("map malloc failed\n", 2), false);
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (ft_putstr_fd("invalid fd 2\n", 2), false);
-	mlxs->map = fill_map(mlxs->map, size, fd);
-	if (!mlxs->map)
-		return (ft_putstr_fd("map doesn't exist\n", 2), false);
+	{
+		free(tmp);
+		exit(EXIT_FAILURE);
+	}
 	if (check_map(mlxs, mlxs->map, size) == false)
 		return (false);
 	return (true);
