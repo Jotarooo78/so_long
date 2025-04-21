@@ -12,6 +12,18 @@
 
 #include "../includes/so_long.h"
 
+int	get_len(char **map)
+{
+	int		len;
+   int i;
+
+	len = 0;
+   i = -1;
+	while (map[++i])
+      len++;
+	return (len);
+}
+
 bool  check_wall(char **map, int size)
 {
    int y;
@@ -21,11 +33,11 @@ bool  check_wall(char **map, int size)
    y = 0;
    while (y < size)
    {
-      len = ft_strlen(map[y]) - 2;
-      if (y == 0 || y == (size - 1))
+      len = ft_strlen(map[y]) - 1;
+      if (y == 0 || y == (size))
       {
          x = 0;
-         while (map[y][x + 1])
+         while (map[y][x])
          {
             if (map[y][x] != '1')
                return (ft_putstr_fd("invalid first or last wall\n", 2), false); 
@@ -88,19 +100,22 @@ bool  chec_rectangular_map(char **map, int size)
    return (true);
 }
 
-bool  check_map(t_game *mlxs, char **map, int size)
+bool  check_map(t_game *mlxs)
 {
    mlxs->collect = 0;
    mlxs->exit = 0;
    mlxs->player = 0;
+   int size;
 
-   if (check_wall(map, size) == false)
+   size = get_len(mlxs->map);
+   printf("\nlen : %d\n", size);
+   if (check_wall(mlxs->map, size) == false)
       return (false);
-   if (check_parameters(mlxs, map, size) == false)
+   if (check_parameters(mlxs, mlxs->map, size) == false)
       return (false);
-   if (chec_rectangular_map(map, size) == false)
+   if (chec_rectangular_map(mlxs->map, size) == false)
       return (false);
    else
-      printf("yes");
+      free_array(mlxs->map);
    return (true);
 }

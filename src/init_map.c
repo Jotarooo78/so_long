@@ -6,30 +6,11 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/19 17:15:11 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:10:57 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	grid_size(int fd)
-{
-	char	*len;
-	int		count;
-
-	count = 0;
-	len = get_next_line(fd);
-	while (len != NULL)
-	{
-		if (len[0] != '\n' && len[0] != '\0')
-			count++;
-		free(len);
-		len = get_next_line(fd);
-	}
-	free(len);
-	close(fd);
-	return (count);
-}
 
 bool	check_double_backslash(char *tmp)
 {
@@ -45,17 +26,17 @@ bool	check_double_backslash(char *tmp)
 	return (false);
 }
 
-char	*join_map(t_game *mlxs, char *str, int fd)
+char	*join_map(char *str, int fd)
 {
 	char	*tmp;
 	char	*new_tmp;
 
 	tmp = ft_strdup("");
 	if (tmp == NULL)
-		return ;
+		return (NULL);
 	while (str)
 	{
-		new_tmp = ft_strjoin(str, tmp);
+		new_tmp = ft_strjoin(tmp, str);
 		if (new_tmp == NULL)
 			return (free(str), close(fd), NULL);
 		tmp = new_tmp;
@@ -72,7 +53,6 @@ char	*join_map(t_game *mlxs, char *str, int fd)
 
 bool	init_map(t_game *mlxs, char *filename)
 {
-	int		size;
 	int		fd;
 	char	*str;
 	char	*tmp;
@@ -81,21 +61,22 @@ bool	init_map(t_game *mlxs, char *filename)
 	if (fd == -1)
 		return (ft_putstr_fd("invalid fd 1\n", 2), false);
 	str = get_next_line(fd);
-	tmp = join_map(mlxs, str, fd);
+	tmp = join_map(str, fd);
 	if (tmp == NULL)
 	{
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
 	close(fd);
-	mlxs->map = ft_split(str, '\n');
+	mlxs->map = ft_split(tmp, '\n');
+	print_map(mlxs);
 	free(tmp);
 	if (mlxs->map == NULL)
 	{
 		free(tmp);
 		exit(EXIT_FAILURE);
 	}
-	if (check_map(mlxs, mlxs->map, size) == false)
+	if (check_map(mlxs) == false)
 		return (false);
 	return (true);
 }
