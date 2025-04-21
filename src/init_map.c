@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/21 15:10:57 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:38:56 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ bool	init_map(t_game *mlxs, char *filename)
 	}
 	close(fd);
 	mlxs->map = ft_split(tmp, '\n');
-	print_map(mlxs);
 	free(tmp);
 	if (mlxs->map == NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/21 14:26:26 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:39:42 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ bool    init_mlx_data(t_game *mlxs)
         exit(EXIT_FAILURE);
         return (false);
     }
-    mlxs->mlx_win = mlx_new_window(mlxs->mlx,
+    mlxs->win = mlx_new_window(mlxs->mlx,
             WDW_WIDTH, WDW_HEIGHT, "so_long");
-    if (mlxs->mlx_win == NULL)
+    if (mlxs->win == NULL)
     {
         mlx_destroy_display(mlxs->mlx);
         free(mlxs->mlx);
@@ -76,6 +76,8 @@ int main(int argc, char **argv)
         // if (init_mlx_data(mlxs) == false)
         //     ft_error("mlxs init failed\n", 1);
         // mlx_loop(mlxs->mlx);
+        free_array(mlxs->map);
+        free_struct(mlxs);
         return (0);
     }
     ft_error("invalid number of argument\n");
