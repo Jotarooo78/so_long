@@ -6,24 +6,24 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/21 15:39:42 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:54:43 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void    print_map(t_game *mlxs)
+void    print_map(char **map)
 {
     int i = 0;
     
-    while (mlxs->map[i])
+    while (map[i])
     {
-        if (!mlxs->map[i])
+        if (!map[i])
 		{
 			printf("Invalid map line at index %d\n", i);
 			break;
 		}
-        printf("%s\n", mlxs->map[i]);
+        printf("%s\n", map[i]);
         i++;
     }
 }
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
         //     ft_error("mlxs init failed\n", 1);
         // mlx_loop(mlxs->mlx);
         free_array(mlxs->map);
-        free_struct(mlxs);
+        free(mlxs);
         return (0);
     }
     ft_error("invalid number of argument\n");

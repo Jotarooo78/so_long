@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/21 15:38:56 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:21:41 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ char	*join_map(char *str, int fd)
 	{
 		new_tmp = ft_strjoin(tmp, str);
 		if (new_tmp == NULL)
-			return (free(str), close(fd), NULL);
+			return (free(str), free(tmp), close(fd), NULL);
+		free(tmp);
 		tmp = new_tmp;
 		free(str);
 		str = get_next_line(fd);
@@ -47,6 +48,7 @@ char	*join_map(char *str, int fd)
 	{
 		free(tmp);
 		ft_putstr_fd("invalid fd 1\n", 2);
+		return (NULL);
 	}
 	return (tmp);
 }
