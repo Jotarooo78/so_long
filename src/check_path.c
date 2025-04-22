@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:20 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/22 17:56:13 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:01:41 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	flood_fill(char **map, t_game *mlxs)
     printf("beg : %d\n", begin.x);
     printf("player y : %d\n", begin.y);
     // printf("%c\n", map[begin.y][begin.x]);
-	// fill(map, size, begin, map[begin.y][begin.x]); // segfault
+	fill(map, x, y, char[p_y][p_x]); // segfault
 }
 
 bool	check_path(t_game *mlxs, int size)
