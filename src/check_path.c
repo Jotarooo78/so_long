@@ -6,71 +6,59 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:20 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/23 17:04:33 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:06:05 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-bool	check_fill_map(char **map, int size)
-{
-	int x;
-	int y;
-	int len;
 
-	y = 1;
-	while (y + 1 < size)
+bool	check_after_fill(t_game *mlxs, char **dup_map)
+{
+	int y;
+	int x;
+	int collect;
+
+	collect = 0;
+	y = 0;
+	while (y < mlxs->map_y)
 	{
-		x = 1;
-		len = ft_strlen(map[x]);
-		while (x < len - 1)
+		x = 0;
+		while (x < mlxs->map_x)
 		{
-            if (map[y][x] != 'F')
-                return (ft_putstr_fd("unwinnable map\n", 2), false);
-            x++;
+			if (dup_map[y][x] == 'C')
+				collect++;
+			x++;
 		}
 		y++;
+	}
+	if (collect != 0 || mlxs->exit_exist == 1)
+	{
+		printf("collect : %d\n", collect);
+		return (false);
 	}
 	return (true);
 }
 
-char	**duplicate_map(char **map, int size)
+void	fill(t_game *mlxs, char **dup_map, int y, int x)
 {
-	char	**dup_map;
-	int		i;
-
-	dup_map = malloc(sizeof(char *) * (size + 1));
-	if (dup_map == NULL)
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		dup_map[i] = ft_strdup(map[i]);
-		if (dup_map[i] == NULL)
-			return (free_array(dup_map), NULL);
-		i++;
-	}
-	dup_map[i] = NULL;
-	return (dup_map);
-}
-
-void	fill(t_game *mlxs, char **dup_map, int y, int x, char to_fill)
-{
-	if (y < 0 || y >= mlxs->map_y || x < 0 || x >= mlxs->map_x || dup_map[y][x] != to_fill)
+	if (y < 0 || y >= mlxs->map_y || x < 0 || x >= mlxs->map_x || dup_map[y][x] == 'F' || dup_map[y][x] == '1')
         return;
+	else if (dup_map[y][x] == 'E')
+	{
+		mlxs->exit_exist = '1';
+		return ;
+	}
 	dup_map[y][x] = 'F';
-	fill(mlxs, dup_map, y - 1, x, to_fill);
-	fill(mlxs, dup_map, y + 1, x, to_fill);
-	fill(mlxs, dup_map, y, x - 1, to_fill);
-	fill(mlxs, dup_map, y, x + 1, to_fill);
+	fill(mlxs, dup_map, y, x - 1);
+	fill(mlxs, dup_map, y, x + 1);
+	fill(mlxs, dup_map, y - 1, x);
+	fill(mlxs, dup_map, y + 1, x);
 }
 
 void	flood_fill(char **dup_map, t_game *mlxs)
 {
 	char to_fill;
-	// (void)mlxs;
-	// (void)dup_map;
-	// (void)to_fill;
 	
 	to_fill = dup_map[mlxs->player_y][mlxs->player_x];
 	// printf("dup_map :\n");
@@ -80,10 +68,9 @@ void	flood_fill(char **dup_map, t_game *mlxs)
 	print_map(mlxs->map);
 	printf("\n");
 	// printf("player y position : %d\nplayer x position : %d\n", mlxs->player_y, mlxs->player_x);
-	printf("map y : %d\nmap x : %d\n", mlxs->map_y, mlxs->map_x);
+	// printf("map y : %d\nmap x : %d\n", mlxs->map_y, mlxs->map_x);
 
-	fill(mlxs, dup_map, mlxs->player_y, mlxs->player_x,
-			dup_map[mlxs->player_y][mlxs->player_x]); // segfault
+	fill(mlxs, dup_map, mlxs->player_y, mlxs->player_x);
 }
 
 bool	check_path(t_game *mlxs, int size)
@@ -94,14 +81,12 @@ bool	check_path(t_game *mlxs, int size)
 	if (dup_map == NULL)
 		return (false);
 	flood_fill(dup_map, mlxs);
-	if (check_fill_map(dup_map, size) == false)
+	if (check_after_fill(mlxs, dup_map) == false)
 	{
 		print_map(dup_map);
 	    ft_putstr_fd("unwinnable map\n", 2);
-	    // free_array(dup_map);
 	}
-	else
-		printf("yes");
+	print_map(dup_map);
 	free_array(dup_map);
 	return (true);
 }

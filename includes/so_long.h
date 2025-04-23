@@ -17,6 +17,7 @@ typedef struct s_game
 {
 	int		collect;
 	int		exit;
+	int		exit_exist;
 	int		player;
 	int		player_x;
 	int		player_y;
@@ -33,6 +34,7 @@ typedef struct s_point
 	int		y;
 }			t_point;
 
+char		**duplicate_map(char **map, int size);
 bool		check_path(t_game *mlxs, int size);
 int			get_x_y_size(t_game *mlxs, char **map);
 void		get_player_position(t_game *mlxs, int y, int x);

@@ -67,6 +67,7 @@ bool	check_parameters(t_game *mlxs, char **map, int size)
 		}
 		x++;
 	}
+	// printf("%d %d %d\n", mlxs->player, mlxs->collect, mlxs->exit);
 	if (mlxs->player != 1 || mlxs->collect < 1 || mlxs->exit != 1)
 		return (ft_putstr_fd("wrong parameters setup\n", 2), false);
 	return (true);

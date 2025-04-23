@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/23 15:38:22 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:50:58 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int main(int argc, char **argv)
         mlxs = malloc(sizeof(t_game));
         if (!mlxs)
             return (ft_putstr_fd("Failed to malloc mlxs", 2), 1);
-        init_map(mlxs, argv[1]);
+        if (init_map(mlxs, argv[1]) == false)
+            return (free(mlxs), 0);
         // if (init_mlx_data(mlxs) == false)
         //     ft_error("mlxs init failed\n", 1);
         // mlx_loop(mlxs->mlx);
