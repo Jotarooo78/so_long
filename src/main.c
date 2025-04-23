@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/22 17:54:43 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:38:22 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    print_map(char **map)
 			printf("Invalid map line at index %d\n", i);
 			break;
 		}
-        printf("%s\n", map[i]);
+        printf("size : %d | %s\n", i, map[i]);
         i++;
     }
 }

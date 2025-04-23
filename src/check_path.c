@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:20 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/22 18:01:41 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:44:02 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,51 +54,37 @@ char	**duplicate_map(char **map, int size)
 	return (dup_map);
 }
 
-void	fill(char **map, t_point size, t_point cur, char to_fill)
+void	fill(t_game *mlxs, char **dup_map, int y, int x, char to_fill)
 {
-    printf("la\n");
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
-		|| map[cur.y][cur.x] != to_fill)
-		return ;
-	map[cur.y][cur.x] = 'F';
-	fill(map, size, (t_point){cur.x - 1, cur.y}, to_fill);
-	fill(map, size, (t_point){cur.x + 1, cur.y}, to_fill);
-	fill(map, size, (t_point){cur.x, cur.y - 1}, to_fill);
-	fill(map, size, (t_point){cur.x, cur.y + 1}, to_fill);
+	if (y < 0 || y >= mlxs->map_y || x < 0 || x >= mlxs->map_x || dup_map[y][x] != to_fill)
+        return;
+	dup_map[mlxs->player_y][mlxs->player_x] = 'F';
+	fill(mlxs, dup_map, y - 1, x, to_fill);
+	fill(mlxs, dup_map, y + 1, x, to_fill);
+	fill(mlxs, dup_map, y, x - 1, to_fill);
+	fill(mlxs, dup_map, y, x + 1, to_fill);
 }
 
-void	flood_fill(char **map, t_game *mlxs)
+void	flood_fill(char **dup_map, t_game *mlxs)
 {
-	t_point	size;
-	t_point	begin;
+	(void)mlxs;
+	(void)dup_map;
 
-	print_map(map);
-	size.x = mlxs->map_x;
-	size.y = mlxs->map_y;
-	// printf("size x : %d, ", size.x);
-    // printf("size y : %d, ", size.y);
-	begin.x = mlxs->player_x;
-	begin.y = mlxs->player_y;
-	// printf("player x : %d, ", begin.x);
-	// printf("player y : %d\n", begin.y);
-    if (begin.x < 0 || begin.x >= size.x || begin.y < 0 || begin.y >= size.y)
-    {
-        ft_putstr_fd("Invalid player position\n", 2);
-        return;
-    }
-    printf("beg : %d\n", begin.x);
-    printf("player y : %d\n", begin.y);
-    // printf("%c\n", map[begin.y][begin.x]);
-	fill(map, x, y, char[p_y][p_x]); // segfault
+	printf("dup_map :\n");
+	print_map(dup_map);
+	printf("\n");
+	printf("map :\n");
+	print_map(mlxs->map);
+	printf("\n");
+	printf("player y position : %d\nplayer x position : %d\n", mlxs->player_y, mlxs->player_x);
+	// fill(mlxs, dup_map, mlxs->player_y, mlxs->player_x,
+	// 		dup_map[mlxs->player_y][mlxs->player_x]); // segfault
 }
 
 bool	check_path(t_game *mlxs, int size)
 {
 	char **dup_map;
 
-	// (void)mlxs;
-	// (void)size;
-	// (void)dup_map;
 	dup_map = duplicate_map(mlxs->map, size);
 	if (dup_map == NULL)
 		return (false);
