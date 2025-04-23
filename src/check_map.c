@@ -2,11 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   check_map_functions.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
+/*                                                    +:+ +:+
 	+:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+      
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+
 	+#+        */
-/*                                                +#+#+#+#+#+  
+/*                                                +#+#+#+#+#+
 	+#+           */
 /*   Created: 2025/04/17 19:01:23 by marvin            #+#    #+#             */
 /*   Updated: 2025/04/17 19:01:23 by marvin           ###   ########.fr       */
@@ -15,7 +15,8 @@
 
 #include "../includes/so_long.h"
 
-bool	check_wall(t_game *mlxs, char **map, int size)
+
+bool	check_wall(char **map, int size)
 {
 	int x;
 	int y;
@@ -40,7 +41,6 @@ bool	check_wall(t_game *mlxs, char **map, int size)
 			return (ft_putstr_fd("invalid middle wall\n", 2), false);
 		x++;
 	}
-	mlxs->map_y = y - 1;
 	return (true);
 }
 
@@ -58,7 +58,7 @@ bool	check_parameters(t_game *mlxs, char **map, int size)
 		while (y < len - 1)
 		{
 			if (map[x][y] == 'P')
-				get_player_position(mlxs, x, y);
+				get_player_position(mlxs, y, x);
 			if (map[x][y] == 'C')
 				mlxs->collect++;
 			if (map[x][y] == 'E')
@@ -72,12 +72,14 @@ bool	check_parameters(t_game *mlxs, char **map, int size)
 	return (true);
 }
 
-bool	check_rectangular_map(t_game *mlxs, char **map, int size)
+bool	check_rectangular_map(char **map, int size)
 {
 	int x;
 	int len_x;
 	int actual_len_x;
 
+	if (size < 3)
+		return (ft_putstr_fd("map is too small\n", 2), false);
 	x = 0;
 	len_x = ft_strlen(map[x]);
 	while (x < size)
@@ -89,7 +91,6 @@ bool	check_rectangular_map(t_game *mlxs, char **map, int size)
 			return (ft_putstr_fd("map isn't a rectangular\n", 2), false);
 		x++;
 	}
-	mlxs->map_x = x;
 	return (true);
 }
 
@@ -100,14 +101,14 @@ bool	check_map(t_game *mlxs)
 	mlxs->player = 0;
 	int size;
 
-	size = get_len(mlxs->map);
-	if (check_wall(mlxs, mlxs->map, size) == false)
+	size = get_x_y_size(mlxs, mlxs->map);
+	if (check_wall(mlxs->map, size) == false)
 		return (false);
 	if (check_parameters(mlxs, mlxs->map, size) == false)
 		return (false);
-	if (check_rectangular_map(mlxs, mlxs->map, size) == false)
+	if (check_rectangular_map(mlxs->map, size) == false)
 		return (false);
 	if (check_path(mlxs, size) == false)
-	   return (false);
+		return (false);
 	return (true);
 }

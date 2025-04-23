@@ -34,7 +34,7 @@ typedef struct s_point
 }			t_point;
 
 bool		check_path(t_game *mlxs, int size);
-int			get_len(char **map);
+int			get_x_y_size(t_game *mlxs, char **map);
 void		get_player_position(t_game *mlxs, int y, int x);
 void		print_map(char **map);
 bool		check_map(t_game *mlxs);

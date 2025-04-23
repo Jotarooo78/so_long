@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:17:08 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/22 17:13:50 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:27:49 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ void	get_player_position(t_game *mlxs, int x, int y)
 	mlxs->player++;
 }
 
-int	get_len(char **map)
+int	get_x_y_size(t_game *mlxs, char **map)
 {
-	int len;
-	int i;
+	int y;
+	int x;
 
-	len = 0;
-	i = -1;
-	while (map[++i])
-		len++;
-	return (len);
+	x = 0;
+	y = 0;
+	while (map[y][x])
+		x++;
+	while (map[y])
+		y++;
+	mlxs->map_y = y;
+	mlxs->map_x = x;
+	return (y);
 }
