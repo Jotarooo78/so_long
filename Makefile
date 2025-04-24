@@ -3,7 +3,7 @@ NAME = so_long
 CC = cc
 
 SRC = src/main.c src/errors.c src/init_map.c src/check_map.c src/check_path.c \
-	src/check_map_utils.c
+	src/check_map_utils.c src/init_picture.c
 
 INCLUDES = includes/so_long.h
 

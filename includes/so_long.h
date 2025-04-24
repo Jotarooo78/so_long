@@ -13,6 +13,22 @@
 # define WDW_HEIGHT 600
 # define BUFFERSIZE 4096
 
+typedef	struct s_sprit
+{
+	void *img;
+	int		height;
+	int		widht;
+}	t_sprit;
+
+typedef struct s_pixel
+{
+	t_sprit	wall_img;
+	t_sprit	backg_img;
+	t_sprit	exit_img;
+	t_sprit	collect_img;
+	t_sprit	player_img;
+}	t_pixel;
+
 typedef struct s_game
 {
 	int		collect;
@@ -23,14 +39,15 @@ typedef struct s_game
 	int		player_y;
 	int		map_x;
 	int		map_y;
+	int		img_width;
+	int		img_height;
 	char	**map;
-}			t_game;
-
-typedef struct s_mlx
-{
 	void	*mlx;
 	void	*win;
-}			t_mlx;
+	t_pixel	pics;
+}			t_game;
+
+bool		init_pics(t_game *data);
 
 char		**duplicate_map(char **map, int size);
 bool		check_path(t_game *mlxs, int size);
