@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:18:21 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/24 18:01:21 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:15:59 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	put_sprite(t_game *data, char c, int x, int y)
 {
 	if (c == '1')
-		mlx_put_image_to_window(data->mlx, data->win, data->pics.wall_img, x
+		mlx_put_image_to_window(data->mlx, data->win, data->pics.wall_img.img, x
 			* 16, y * 16);
 	if (c == '0')
-		mlx_put_image_to_window(data->mlx, data->win, data->pics.backg_img, x * 16, y
+		mlx_put_image_to_window(data->mlx, data->win, data->pics.backg_img.img, x * 16, y
 			* 16);
 	if (c == 'C')
-		mlx_put_image_to_window(data->mlx, data->win, data->pics.collect_img, x * 16,
+		mlx_put_image_to_window(data->mlx, data->win, data->pics.collect_img.img, x * 16,
 			y * 16);
 	if (c == 'E')
-		mlx_put_image_to_window(data->mlx, data->win, data->pics.exit_img, x * 16, y
+		mlx_put_image_to_window(data->mlx, data->win, data->pics.exit_img.img, x * 16, y
 			* 16);
 	if (c == 'P')
-		mlx_put_image_to_window(data->mlx, data->win, data->pics.player_img, x * 16,
+		mlx_put_image_to_window(data->mlx, data->win, data->pics.player_img.img, x * 16,
 			y * 16);
 }
 
@@ -62,31 +62,26 @@ bool	init_picture(t_game *data)
 {
     data->img_height = 16;
     data->img_width = 16;
-    data->pics.wall_img = mlx_xpm_file_to_image(data->mlx, "../asset/wall.xpm",
+    data->pics.wall_img.img = mlx_xpm_file_to_image(data->mlx, "./asset/wall.xpm",
             &data->img_height, &data->img_width);
-    if (data->pics.wall_img == NULL)
+    if (data->pics.wall_img.img == NULL)
         return (ft_putstr_fd("invalid wall image\n", 2), false);
-        
-    data->pics.exit_img = mlx_xpm_file_to_image(data->mlx, "../asset/exit.xpm",
+    data->pics.exit_img.img = mlx_xpm_file_to_image(data->mlx, "./asset/exit.xpm",
             &data->img_height, &data->img_width);
-    if (data->pics.exit_img == NULL)
+    if (data->pics.exit_img.img == NULL)
         return (ft_putstr_fd("invalid exit image\n", 2), false);
-        
-    data->pics.collect_img = mlx_xpm_file_to_image(data->mlx, "../asset/collect.xpm",
+    data->pics.collect_img.img = mlx_xpm_file_to_image(data->mlx, "./asset/collect.xpm",
             &data->img_height, &data->img_width);
-    if (data->pics.collect_img == NULL)
+    if (data->pics.collect_img.img == NULL)
         return (ft_putstr_fd("invalid collect image\n", 2), false);
-
-    data->pics.player_img = mlx_xpm_file_to_image(data->mlx, "../asset/player.xpm",
+    data->pics.player_img.img = mlx_xpm_file_to_image(data->mlx, "./asset/player.xpm",
             &data->img_height, &data->img_width);
-    if (data->pics.player_img == NULL)
+    if (data->pics.player_img.img == NULL)
         return (ft_putstr_fd("invalid player image\n", 2), false);
-
-    data->pics.backg_img = mlx_xpm_file_to_image(data->mlx,
-            "../asset/background.xpm", &data->img_height, &data->img_width);
-    if (data->pics.backg_img == NULL)
+    data->pics.backg_img.img = mlx_xpm_file_to_image(data->mlx,
+            "./asset/background.xpm", &data->img_height, &data->img_width);
+    if (data->pics.backg_img.img == NULL)
         return (ft_putstr_fd("invalid background image\n", 2), false);
-        
     return (true);
 }
 
