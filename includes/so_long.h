@@ -47,7 +47,8 @@ typedef struct s_game
 	t_pixel	pics;
 }			t_game;
 
-bool		init_pics(t_game *data);
+bool	manage_init_texture(t_game *data);
+void	init_picture(t_game *data);
 
 char		**duplicate_map(char **map, int size);
 bool		check_path(t_game *mlxs, int size);
