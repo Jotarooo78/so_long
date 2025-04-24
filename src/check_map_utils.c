@@ -6,24 +6,24 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:17:08 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/23 18:44:41 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:34:18 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	get_player_position(t_game *mlxs, int x, int y)
+void	get_player_position(t_game *data, int x, int y)
 {
-	mlxs->player_x = x;
-	mlxs->player_y = y;
-	mlxs->exit_exist = 0;
-	mlxs->player++;
+	data->player_x = x;
+	data->player_y = y;
+	data->exit_exist = 0;
+	data->player++;
 }
 
-int	get_x_y_size(t_game *mlxs, char **map)
+int	get_x_y_size(t_game *data, char **map)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	x = 0;
 	y = 0;
@@ -31,8 +31,8 @@ int	get_x_y_size(t_game *mlxs, char **map)
 		x++;
 	while (map[y])
 		y++;
-	mlxs->map_y = y;
-	mlxs->map_x = x;
+	data->map_y = y;
+	data->map_x = x;
 	return (y);
 }
 

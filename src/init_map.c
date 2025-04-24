@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/22 15:21:41 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:19:52 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*join_map(char *str, int fd)
 	return (tmp);
 }
 
-bool	init_map(t_game *mlxs, char *filename)
+bool	init_map(t_game *data, char *filename)
 {
 	int		fd;
 	char	*str;
@@ -70,14 +70,14 @@ bool	init_map(t_game *mlxs, char *filename)
 		exit(EXIT_FAILURE);
 	}
 	close(fd);
-	mlxs->map = ft_split(tmp, '\n');
+	data->map = ft_split(tmp, '\n');
 	free(tmp);
-	if (mlxs->map == NULL)
+	if (data->map == NULL)
 	{
 		free(tmp);
 		exit(EXIT_FAILURE);
 	}
-	if (check_map(mlxs) == false)
+	if (check_map(data) == false)
 		return (false);
 	return (true);
 }

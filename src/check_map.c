@@ -44,7 +44,7 @@ bool	check_wall(char **map, int size)
 	return (true);
 }
 
-bool	check_parameters(t_game *mlxs, char **map, int size)
+bool	check_parameters(t_game *data, char **map, int size)
 {
 	int x;
 	int y;
@@ -58,17 +58,16 @@ bool	check_parameters(t_game *mlxs, char **map, int size)
 		while (y < len - 1)
 		{
 			if (map[x][y] == 'P')
-				get_player_position(mlxs, y, x);
+				get_player_position(data, y, x);
 			if (map[x][y] == 'C')
-				mlxs->collect++;
+				data->collect++;
 			if (map[x][y] == 'E')
-				mlxs->exit++;
+				data->exit++;
 			y++;
 		}
 		x++;
 	}
-	// printf("%d %d %d\n", mlxs->player, mlxs->collect, mlxs->exit);
-	if (mlxs->player != 1 || mlxs->collect < 1 || mlxs->exit != 1)
+	if (data->player != 1 || data->collect < 1 || data->exit != 1)
 		return (ft_putstr_fd("wrong parameters setup\n", 2), false);
 	return (true);
 }
@@ -95,21 +94,21 @@ bool	check_rectangular_map(char **map, int size)
 	return (true);
 }
 
-bool	check_map(t_game *mlxs)
+bool	check_map(t_game *data)
 {
-	mlxs->collect = 0;
-	mlxs->exit = 0;
-	mlxs->player = 0;
+	data->collect = 0;
+	data->exit = 0;
+	data->player = 0;
 	int size;
 
-	size = get_x_y_size(mlxs, mlxs->map);
-	if (check_wall(mlxs->map, size) == false)
+	size = get_x_y_size(data, data->map);
+	if (check_wall(data->map, size) == false)
 		return (false);
-	if (check_parameters(mlxs, mlxs->map, size) == false)
+	if (check_parameters(data, data->map, size) == false)
 		return (false);
-	if (check_rectangular_map(mlxs->map, size) == false)
+	if (check_rectangular_map(data->map, size) == false)
 		return (false);
-	if (check_path(mlxs, size) == false)
+	if (check_path(data, size) == false)
 		return (false);
 	return (true);
 }

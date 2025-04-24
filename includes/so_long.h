@@ -24,15 +24,13 @@ typedef struct s_game
 	int		map_x;
 	int		map_y;
 	char	**map;
-	void	*mlx;
-	void	*win;
 }			t_game;
 
-typedef struct s_point
+typedef struct s_mlx
 {
-	int		x;
-	int		y;
-}			t_point;
+	void	*mlx;
+	void	*win;
+}			t_mlx;
 
 char		**duplicate_map(char **map, int size);
 bool		check_path(t_game *mlxs, int size);
@@ -42,8 +40,8 @@ void		print_map(char **map);
 bool		check_map(t_game *mlxs);
 void		get_player_position(t_game *mlxs, int y, int x);
 bool		init_map(t_game *mlxs, char *filename);
+
 void		free_array(char **array);
-void		free_struct(t_game *mlxs);
 int			ft_error(char *str);
 
 #endif
