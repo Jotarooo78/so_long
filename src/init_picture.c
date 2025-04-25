@@ -6,26 +6,11 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:18:21 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/24 18:49:02 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:22:29 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-bool	check_images(t_game *data)
-{
-	if (data->pics.wall_img.img == NULL)
-		return (ft_putstr_fd("Invalid wall image\n", 2), false);
-	if (data->pics.exit_img.img == NULL)
-		return (ft_putstr_fd("Invalid exit image\n", 2), false);
-	if (data->pics.collect_img.img == NULL)
-		return (ft_putstr_fd("Invalid collect image\n", 2), false);
-	if (data->pics.player_img.img == NULL)
-		return (ft_putstr_fd("Invalid player image\n", 2), false);
-	if (data->pics.backg_img.img == NULL)
-		return (ft_putstr_fd("Invalid background image\n", 2), false);
-	return (true);
-}
 
 void	put_sprite(t_game *data, char c, int x, int y)
 {
@@ -71,6 +56,21 @@ void	display_map(t_game *data)
 		}
 		y++;
 	}
+}
+
+bool	check_images(t_game *data)
+{
+	if (data->pics.wall_img.img == NULL)
+		return (ft_putstr_fd("Invalid wall image\n", 2), false);
+	if (data->pics.exit_img.img == NULL)
+		return (ft_putstr_fd("Invalid exit image\n", 2), false);
+	if (data->pics.collect_img.img == NULL)
+		return (ft_putstr_fd("Invalid collect image\n", 2), false);
+	if (data->pics.player_img.img == NULL)
+		return (ft_putstr_fd("Invalid player image\n", 2), false);
+	if (data->pics.backg_img.img == NULL)
+		return (ft_putstr_fd("Invalid background image\n", 2), false);
+	return (true);
 }
 
 void	init_picture(t_game *data)

@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/25 14:09:22 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:41:39 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,13 @@ bool	init_game_data(t_game *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (ft_putstr_fd("Failed to init mlx", 2), false);
-	data->win = mlx_new_window(data->mlx, win_height, win_height, "so_long");
+	data->win = mlx_new_window(data->mlx, win_width , win_height, "so_long");
 	if (data->win == NULL)
 	{
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 		return (ft_putstr_fd("Failed to init window", 2), false);
 	}
-	if (manage_init_texture(data) == false)
-		return (false);
-	mlx_loop(data->mlx);	
 	return (true);
 }
 
@@ -73,12 +70,15 @@ int	main(int argc, char **argv)
 		if ((check_extention(argv[1]) == false) || (argv[1] == NULL))
 			return (ft_putstr_fd("invalid map format\n", 2), 1);
 		data = malloc(sizeof(t_game));
-		if (data == NULL || data == NULL)
+		if (data == NULL)
 			return (ft_putstr_fd("Failed to malloc data", 2), 1);
 		if (init_map(data, argv[1]) == false)
 			return (free(data), 1);
-		// if (init_game_data(data) == false)
-        //     return (free(data), 1);
+		if (init_game_data(data) == false)
+            return (free(data), 1);
+		if (manage_init_texture(data) == false)
+			return (false);
+		mlx_loop(data->mlx);	
 		free_array(data->map);
 		free(data);
 		return (0);
