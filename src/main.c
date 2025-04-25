@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/24 18:49:39 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:09:22 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	init_game_data(t_game *data)
 	}
 	if (manage_init_texture(data) == false)
 		return (false);
-	// mlx_loop(data->mlx);	
+	mlx_loop(data->mlx);	
 	return (true);
 }
 
@@ -77,8 +77,9 @@ int	main(int argc, char **argv)
 			return (ft_putstr_fd("Failed to malloc data", 2), 1);
 		if (init_map(data, argv[1]) == false)
 			return (free(data), 1);
-		if (init_game_data(data) == false)
-            return (free(data), 1);
+		// if (init_game_data(data) == false)
+        //     return (free(data), 1);
+		free_array(data->map);
 		free(data);
 		return (0);
 	}
