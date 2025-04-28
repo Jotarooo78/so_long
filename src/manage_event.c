@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 15:36:41 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/28 17:43:09 by marvin           ###   ########.fr       */
+/*   Created: 2025/04/28 18:42:52 by marvin            #+#    #+#             */
+/*   Updated: 2025/04/28 19:07:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,20 @@ int handle_key(int keycode, t_game *data)
       return (exit_game(data));
    if (data->map[new_y][new_x] != '1')
    {
+      printf("Old position: (%d, %d)\n", data->player_y, data->player_x);
+      printf("New position: (%d, %d)\n", new_y, new_x);
+      printf("Map before update:\n");
+      data->map[data->player_y][data->player_x] = '0';
+      printf("Starting fill at: (%d, %d)\n", data->player_y, data->player_x);
       data->player_x = new_x;
       data->player_y = new_y;
+      printf("ending fill at: (%d, %d)\n", data->player_y, data->player_x);
+      data->map[data->player_y][data->player_x] = 'P';
       data->move++;
-      printf("Mouvements : %d\n", data->move);       
+      printf("Mouvements : %d\n", data->move);
+      print_map(data->map);      
       display_map(data);
+      print_map(data->map);
    }
    return (0);
 }

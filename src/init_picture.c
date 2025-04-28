@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:18:21 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/28 17:46:28 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/28 18:40:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ bool	manage_init_texture(t_game *data)
 	if (check_images(data) == false)
 		return (false);
 	display_map(data);
-	data->move = 0;
+	data->move = -1;
 	return (true);
 }
