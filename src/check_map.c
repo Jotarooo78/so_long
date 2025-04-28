@@ -22,24 +22,24 @@ bool	check_wall(char **map, int size)
 	int y;
 	int len;
 
-	x = 0;
-	while (x < size)
+	y = 0;
+	while (y < size)
 	{
-		len = ft_strlen(map[x]) - 1;
-		if (x == 0 || x == (size))
+		len = ft_strlen(map[y]) - 1;
+		if (y == 0 || y == (size))
 		{
-			y = 0;
-			while (map[x][y])
+			x = 0;
+			while (map[y][x])
 			{
-				if (map[x][y] != '1')
+				if (map[y][x] != '1')
 					return (ft_putstr_fd("invalid first or last wall\n", 2),
 						false);
-				y++;
+				x++;
 			}
 		}
-		else if ((map[x][0] != '1') || (map[x][len] != '1'))
+		else if ((map[y][0] != '1') || (map[y][len] != '1'))
 			return (ft_putstr_fd("invalid middle wall\n", 2), false);
-		x++;
+		y++;
 	}
 	return (true);
 }
@@ -50,22 +50,22 @@ bool	check_parameters(t_game *data, char **map, int size)
 	int y;
 	int len;
 
-	x = 1;
-	while (x + 1 < size)
+	y = 1;
+	len = ft_strlen(map[y]);
+	while (y + 1 < size)
 	{
-		y = 1;
-		len = ft_strlen(map[x]);
-		while (y < len - 1)
+		x = 1;
+		while (x < len - 1)
 		{
-			if (map[x][y] == 'P')
+			if (map[y][x] == 'P')
 				get_player_position(data, y, x);
-			if (map[x][y] == 'C')
+			if (map[y][x] == 'C')
 				data->collect++;
-			if (map[x][y] == 'E')
+			if (map[y][x] == 'E')
 				data->exit++;
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	if (data->player != 1 || data->collect < 1 || data->exit != 1)
 		return (ft_putstr_fd("wrong parameters setup\n", 2), false);
@@ -74,22 +74,22 @@ bool	check_parameters(t_game *data, char **map, int size)
 
 bool	check_rectangular_map(char **map, int size)
 {
-	int x;
-	int len_x;
-	int actual_len_x;
+	int y;
+	int len_y;
+	int actual_len_y;
 
 	if (size < 3)
 		return (ft_putstr_fd("map is too small\n", 2), false);
-	x = 0;
-	len_x = ft_strlen(map[x]);
-	while (x < size)
+	y = 0;
+	len_y = ft_strlen(map[y]);
+	while (y < size)
 	{
-		actual_len_x = ft_strlen(map[x]);
-		if (x + 1 < size && actual_len_x == len_x - 1)
+		actual_len_y = ft_strlen(map[y]);
+		if (y + 1 < size && actual_len_y == len_y - 1)
 			return (true);
-		if (actual_len_x != len_x)
+		if (actual_len_y != len_y)
 			return (ft_putstr_fd("map isn't a rectangular\n", 2), false);
-		x++;
+		y++;
 	}
 	return (true);
 }
