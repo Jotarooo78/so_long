@@ -1,24 +1,27 @@
 /* XPM */
-static char * Skeleton_xpm[] = {
-"16 16 5 1",
-" 	c None",
-".	c #3D253B",
-"+	c #CCA8A3",
-"@	c #EBD0C5",
-"#	c #A17877",
+static char *e2e2484705fd4ad7900d36713f4da0e1TtUzbAobdkYG5xOi[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 5 1 ",
+"  c None",
+". c #3D253B",
+"X c #A17877",
+"o c #CCA8A3",
+"O c #EBD0C5",
+/* pixels */
 "                ",
 "     ......     ",
-"    .+@@@@+.    ",
-"   .+@@@@@@+.   ",
-"   .+@@@@@@+.   ",
-"   .+..@@..+.   ",
-"   .+..@@..+.   ",
-"    .+@@@@+.    ",
-"   .#+#++#+#.   ",
-"   .+#@##@#+.   ",
-"  .@++@@@@++@.  ",
-" .++.@++++@.++. ",
-"  ...@@@@@@...  ",
-"   .+@#..#@+.   ",
-"   .@@.  .@@.   ",
-"                "};
+"    .oOOOOo.    ",
+"   .oOOOOOOo.   ",
+"   .oOOOOOOo.   ",
+"   .o..OO..o.   ",
+"   .o..OO..o.   ",
+"    .oOOOOo.    ",
+"   .XoXooXoX.   ",
+"   .oXOXXOXo.   ",
+"  .OooOOOOooO.  ",
+" .oo.OooooO.oo. ",
+"  ...OOOOOO...  ",
+"   .oOX..XOo.   ",
+"   .OO.  .OO.   ",
+"                "
+};

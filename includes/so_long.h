@@ -13,20 +13,26 @@
 # define WDW_HEIGHT 600
 # define BUFFERSIZE 4096
 
-typedef	struct s_sprit
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+# define ESC 53
+
+typedef	struct s_sprite
 {
 	void *img;
 	int		height;
 	int		widht;
-}	t_sprit;
+}	t_sprite;
 
 typedef struct s_pixel
 {
-	t_sprit	wall_img;
-	t_sprit	backg_img;
-	t_sprit	exit_img;
-	t_sprit	collect_img;
-	t_sprit	player_img;
+	t_sprite	wall_img;
+	t_sprite	backg_img;
+	t_sprite	exit_img;
+	t_sprite	collect_img;
+	t_sprite	player_img;
 }	t_pixel;
 
 typedef struct s_game
