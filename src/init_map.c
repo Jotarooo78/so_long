@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/25 14:03:36 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/28 18:02:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,13 @@ bool	init_map(t_game *data, char *filename)
 	if (tmp == NULL)
 	{
 		close(fd);
-		exit(EXIT_FAILURE);
+		exit_game(data);
 	}
 	close(fd);
 	data->map = ft_split(tmp, '\n');
 	free(tmp);
 	if (data->map == NULL)
-	{
-		free(tmp);
-		exit(EXIT_FAILURE);
-	}
+		exit_game(data);
 	if (check_map(data) == false)
 		return (false);
 	return (true);

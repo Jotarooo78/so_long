@@ -47,6 +47,7 @@ typedef struct s_game
 	int		map_y;
 	int		img_width;
 	int		img_height;
+	int		move;
 	char	**map;
 	void	*mlx;
 	void	*win;
@@ -55,7 +56,9 @@ typedef struct s_game
 
 bool	manage_init_texture(t_game *data);
 void	init_picture(t_game *data);
+void    init_move_input(t_game *data);
 
+void display_map(t_game *data);
 char		**duplicate_map(char **map, int size);
 bool		check_path(t_game *mlxs, int size);
 int			get_x_y_size(t_game *mlxs, char **map);
@@ -66,6 +69,6 @@ void		get_player_position(t_game *mlxs, int y, int x);
 bool		init_map(t_game *mlxs, char *filename);
 
 void		free_array(char **array);
-int			ft_error(char *str);
+int exit_game(t_game *data);
 
 #endif

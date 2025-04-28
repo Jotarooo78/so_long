@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_picture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:18:21 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/25 15:22:29 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/28 17:46:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ bool	manage_init_texture(t_game *data)
 	if (check_images(data) == false)
 		return (false);
 	display_map(data);
+	data->move = 0;
 	return (true);
 }

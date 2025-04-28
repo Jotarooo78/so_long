@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:20 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/24 13:34:07 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/28 18:31:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ bool	check_after_fill(t_game *data, char **dup_map)
 		}
 		y++;
 	}
-	if (collect != 0 || data->exit_exist == 1)
-	{
-		printf("collect : %d\n", collect);
+	if (collect != 0 || data->exit_exist != 1)
 		return (false);
-	}
 	return (true);
 }
 
@@ -46,7 +43,7 @@ void	fill(t_game *data, char **dup_map, int y, int x)
 		return ;
 	else if (dup_map[y][x] == 'E')
 	{
-		data->exit_exist = '1';
+		data->exit_exist = 1;
 		return ;
 	}
 	dup_map[y][x] = 'F';
@@ -58,9 +55,6 @@ void	fill(t_game *data, char **dup_map, int y, int x)
 
 void	flood_fill(char **dup_map, t_game *data)
 {
-	char	to_fill;
-
-	to_fill = dup_map[data->player_y][data->player_x];
 	fill(data, dup_map, data->player_y, data->player_x);
 }
 
@@ -72,8 +66,14 @@ bool	check_path(t_game *data, int size)
 	if (dup_map == NULL)
 		return (false);
 	flood_fill(dup_map, data);
+	print_map(dup_map);
 	if (check_after_fill(data, dup_map) == false)
+	{
 		ft_putstr_fd("unwinnable map\n", 2);
+		print_map(dup_map);
+		free_array(dup_map);
+		return (false);
+	}
 	free_array(dup_map);
 	return (true);
 }

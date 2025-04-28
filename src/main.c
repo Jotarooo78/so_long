@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/25 16:54:48 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/28 18:06:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ int	main(int argc, char **argv)
 		if (data == NULL)
 			return (ft_putstr_fd("Failed to malloc data", 2), 1);
 		if (init_map(data, argv[1]) == false)
-			return (free(data), 1);
+			return (exit_game(data));
 		if (init_game_data(data) == false)
-            return (free(data), 1);
+			return (exit_game(data));
 		if (manage_init_texture(data) == false)
-			return (false);
-		mlx_loop(data->mlx);	
-		free_array(data->map);
-		free(data);
+			return (exit_game(data));
+		init_move_input(data);
+		mlx_loop(data->mlx);
+		exit_game(data);
 		return (0);
 	}
-	ft_error("invalid number of argument\n");
+	return (ft_putstr_fd("invalid number of argument\n", 2), 1);
 }
