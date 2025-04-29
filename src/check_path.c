@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:20 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/29 14:36:37 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:54:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ bool	check_path(t_game *data, int size)
 	flood_fill(dup_map, data);
 	if (check_after_fill(data, dup_map) == false)
 	{
-		ft_putstr_fd("unwinnable map\n", 2);
-		print_map(dup_map);
+		ft_putstr_fd("Error\nunwinnable map\n", 2);
 		free_array(dup_map);
 		return (false);
 	}

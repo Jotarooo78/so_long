@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/29 15:18:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:52:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*join_map(char *str, int fd)
 	if (check_double_backslash(tmp) == true)
 	{
 		free(tmp);
-		ft_putstr_fd("invalid fd 1\n", 2);
+		ft_putstr_fd("Error\ninvalid fd 1\n", 2);
 		return (NULL);
 	}
 	return (tmp);
@@ -61,7 +61,7 @@ bool	init_map(t_game *data, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (ft_putstr_fd("invalid fd 1\n", 2), false);
+		return (ft_putstr_fd("Error\ninvalid fd 1\n", 2), false);
 	str = get_next_line(fd);
 	tmp = join_map(str, fd);
 	if (tmp == NULL)

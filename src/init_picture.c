@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:18:21 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/28 18:40:31 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 17:04:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ void	display_map(t_game *data)
 bool	check_images(t_game *data)
 {
 	if (data->pics.wall_img.img == NULL)
-		return (ft_putstr_fd("Invalid wall image\n", 2), false);
+		return (ft_putstr_fd("Error\nInvalid wall image\n", 2), false);
 	if (data->pics.exit_img.img == NULL)
-		return (ft_putstr_fd("Invalid exit image\n", 2), false);
+		return (ft_putstr_fd("Error\nInvalid exit image\n", 2), false);
 	if (data->pics.collect_img.img == NULL)
-		return (ft_putstr_fd("Invalid collect image\n", 2), false);
+		return (ft_putstr_fd("Error\nInvalid collect image\n", 2), false);
 	if (data->pics.player_img.img == NULL)
-		return (ft_putstr_fd("Invalid player image\n", 2), false);
+		return (ft_putstr_fd("Error\nInvalid player image\n", 2), false);
 	if (data->pics.backg_img.img == NULL)
-		return (ft_putstr_fd("Invalid background image\n", 2), false);
+		return (ft_putstr_fd("Error\nInvalid background image\n", 2), false);
 	return (true);
 }
 

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:43:25 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/29 15:24:15 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 17:01:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int exit_game(t_game *data, int err)
 {
     if (data)
         clean_data_up(data);
-    if (err == 0)
-        exit(EXIT_SUCCESS);
-    exit(EXIT_FAILURE);
+    if (err == 1)
+        exit(EXIT_FAILURE);
+    exit(EXIT_SUCCESS);
 }

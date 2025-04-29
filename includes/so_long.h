@@ -5,7 +5,6 @@
 # include "../libx/mlx.h"
 # include "../libx/mlx_int.h"
 # include <stdbool.h>
-# include <stdio.h>
 # include <unistd.h>
 
 # define EXIT_FAILURE 1

@@ -32,13 +32,13 @@ bool	check_wall(char **map, int size)
 			while (map[y][x])
 			{
 				if (map[y][x] != '1')
-					return (ft_putstr_fd("invalid first or last wall\n", 2),
+					return (ft_putstr_fd("Error\ninvalid first or last wall\n", 2),
 						false);
 				x++;
 			}
 		}
 		else if ((map[y][0] != '1') || (map[y][len] != '1'))
-			return (ft_putstr_fd("invalid middle wall\n", 2), false);
+			return (ft_putstr_fd("Error\ninvalid middle wall\n", 2), false);
 		y++;
 	}
 	return (true);
@@ -68,7 +68,7 @@ bool	check_parameters(t_game *data, char **map, int size)
 		y++;
 	}
 	if (data->player != 1 || data->collect < 1 || data->exit != 1)
-		return (ft_putstr_fd("wrong parameters setup\n", 2), false);
+		return (ft_putstr_fd("Error\nwrong parameters setup\n", 2), false);
 	return (true);
 }
 
@@ -79,7 +79,7 @@ bool	check_rectangular_map(char **map, int size)
 	int actual_len_y;
 
 	if (size < 3)
-		return (ft_putstr_fd("map is too small\n", 2), false);
+		return (ft_putstr_fd("Error\nmap is too small\n", 2), false);
 	y = 0;
 	len_y = ft_strlen(map[y]);
 	while (y < size)
@@ -88,7 +88,7 @@ bool	check_rectangular_map(char **map, int size)
 		if (y + 1 < size && actual_len_y == len_y - 1)
 			return (true);
 		if (actual_len_y != len_y)
-			return (ft_putstr_fd("map isn't a rectangular\n", 2), false);
+			return (ft_putstr_fd("Error\nmap isn't a rectangular\n", 2), false);
 		y++;
 	}
 	return (true);
