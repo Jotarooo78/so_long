@@ -17,7 +17,7 @@ OBJ = $(SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -g -I$(LIBFT_DIR) -I$(LIBX_DIR)
 
-LDFLAGS = -L$(LIBX_DIR) -lmlx -lX11 -lXext -lm -no-pie
+LDFLAGS = -L$(LIBX_DIR) -Imlx_linux -lmlx -lX11 -lXext -lm
 
 all: $(LIBFT) $(LIBX) $(NAME)
 

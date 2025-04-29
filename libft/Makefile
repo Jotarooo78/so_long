@@ -15,7 +15,7 @@ INCLUDES = -I.
 
 OBJ = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -fPIC
+CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
