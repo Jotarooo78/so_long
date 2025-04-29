@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:17:08 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/28 18:14:47 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:36:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	get_player_position(t_game *data, int x, int y)
+void	get_player_position(t_game *data, int y, int x)
 {
 	data->player_x = x;
 	data->player_y = y;

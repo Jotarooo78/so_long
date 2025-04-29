@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:24:35 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/28 18:56:31 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 13:11:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	ft_lstsize(t_list *lst)
 	return (i);
 }
 
-void	printlist(t_list *a)
-{
-	while ((char *)a)
-	{
-		printf("%s\n", (char *)a->content);
-		a = a->next;
-	}
-}
+// void	printlist(t_list *a)
+// {
+// 	while ((char *)a)
+// 	{
+// 		printf("%s\n", (char *)a->content);
+// 		a = a->next;
+// 	}
+// }
 
 // int	main(void)
 // {
