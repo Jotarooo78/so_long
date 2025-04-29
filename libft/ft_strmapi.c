@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:20:27 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/15 11:20:25 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	main(void)
   char *final_s;
   char *s = "aaa";
   final_s = ft_strmapi(s, &ft_up);
-  printf("%s\n", final_s);
+  ft_printf("%s\n", final_s);
   return (0);
 }*/

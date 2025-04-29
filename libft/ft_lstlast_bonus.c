@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:17:10 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/22 16:00:01 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ t_list	*ft_lstlast(t_list *lst)
 // 	expected = ((void*)0);
 // 	actual = ft_lstlast(l);
 // 	if (actual == expected)S
-// 		exit(printf("TEST_SUCCESS"));
-// 	exit(printf("TEST_FAILED"));
+// 		exit(ft_printf("TEST_SUCCESS"));
+// 	exit(ft_printf("TEST_FAILED"));
 // }

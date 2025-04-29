@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:35:49 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/28 19:14:39 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	main(void)
 	src = "/|\x12\xff\x09\0\x42\042\0\42|\\";
 		size = 12;
 	if (memchr(src, '\0', size) == ft_memchr(src, '\0', size))
-		exit(printf("TEST_SUCCESS"));
-	exit(printf("TEST_FAILED"));
+		exit(ft_printf("TEST_SUCCESS"));
+	exit(ft_printf("TEST_FAILED"));
 }
 */
 /*
@@ -47,8 +47,8 @@ int	main(int ac, char **av)
 {
 	if (ac == 4)
 	{
-		printf("%s\n", (char *)ft_memchr(av[1], av[2][0], atoi(av[3])));
-		printf("- \n%s", (char *)memchr(av[1], av[2][0], atoi(av[3])));
+		ft_printf("%s\n", (char *)ft_memchr(av[1], av[2][0], atoi(av[3])));
+		ft_printf("- \n%s", (char *)memchr(av[1], av[2][0], atoi(av[3])));
 	}
 	return (0);
 }*/

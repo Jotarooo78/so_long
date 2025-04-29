@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:19:02 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/16 13:49:25 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ int	main(void)
 {
 	char s1[] = "\200";
 	char s2[] = "\0";
-	printf("%d\n", ft_strncmp(s1, s2, 1));
-	printf("%d\n", strncmp(s1, s2, 1));
+	ft_printf("%d\n", ft_strncmp(s1, s2, 1));
+	ft_printf("%d\n", strncmp(s1, s2, 1));
 	}
 
 int	main(int ac, char **av)
 {
 	if (ac == 4)
 	{
-		printf("%d\n", ft_strncmp(av[1], av[2], atoi(av[3])));
-		printf("%d\n", strncmp(av[1], av[2], atoi(av[3])));
+		ft_printf("%d\n", ft_strncmp(av[1], av[2], atoi(av[3])));
+		ft_printf("%d\n", strncmp(av[1], av[2], atoi(av[3])));
 	}
 	return (0);
 }*/

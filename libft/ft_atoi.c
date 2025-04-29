@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:01:03 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/14 16:59:55 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		printf("%d\n", ft_atoi(av[1]));
-		printf("%d\n", atoi(av[1]));
+		ft_printf("%d\n", ft_atoi(av[1]));
+		ft_printf("%d\n", atoi(av[1]));
 	}
 	return (0);
 }*/

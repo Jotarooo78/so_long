@@ -18,6 +18,7 @@
 # define S 115
 # define D 100
 # define ESC 65307
+# define CROIX 17
 
 typedef	struct s_sprite
 {
@@ -69,6 +70,6 @@ void		get_player_position(t_game *mlxs, int y, int x);
 bool		init_map(t_game *mlxs, char *filename);
 
 void		free_array(char **array);
-int exit_game(t_game *data);
+int exit_game(t_game *data, int err);
 
 #endif

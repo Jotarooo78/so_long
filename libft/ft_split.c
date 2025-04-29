@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:56:39 by armosnie          #+#    #+#             */
-/*   Updated: 2024/12/02 14:12:36 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	**ft_split(const char *s, char c)
 // 	{
 // 		while (res[j])
 // 		{
-// 			printf("%s\n", res[j]);
+// 			ft_printf("%s\n", res[j]);
 // 			j++;
 // 		}
 // 	}

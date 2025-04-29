@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:43:25 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/28 18:08:49 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:24:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_array(char **array)
 	free(array);
 }
 
-int exit_game(t_game *data)
+void    clean_data_up(t_game *data)
 {
     if (data)
     {
@@ -50,5 +50,13 @@ int exit_game(t_game *data)
         }
         free(data);
     }
-    exit(EXIT_SUCCESS);
+}
+
+int exit_game(t_game *data, int err)
+{
+    if (data)
+        clean_data_up(data);
+    if (err == 0)
+        exit(EXIT_SUCCESS);
+    exit(EXIT_FAILURE);
 }

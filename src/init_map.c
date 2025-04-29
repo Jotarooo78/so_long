@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/28 18:02:44 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:18:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ bool	init_map(t_game *data, char *filename)
 	if (tmp == NULL)
 	{
 		close(fd);
-		exit_game(data);
+		exit_game(data, 1);
 	}
 	close(fd);
 	data->map = ft_split(tmp, '\n');
 	free(tmp);
 	if (data->map == NULL)
-		exit_game(data);
+		exit_game(data, 1);
 	if (check_map(data) == false)
 		return (false);
 	return (true);

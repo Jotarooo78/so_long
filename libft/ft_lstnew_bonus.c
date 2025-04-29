@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:14:19 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/28 19:14:25 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	main(void)
 	new = ft_lstnew("Hello, world!");
 	if (new != NULL)
 	{
-		printf("Content: %s\n", (char *)new->content);
-		printf("Next: %p\n", new->next);
+		ft_printf("Content: %s\n", (char *)new->content);
+		ft_printf("Next: %p\n", new->next);
 	}
 	else
-		printf("Failed to allocate memory.\n");
+		ft_printf("Failed to allocate memory.\n");
 	free(new);
 
 	return (0);

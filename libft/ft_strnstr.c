@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:59:19 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/18 15:57:20 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int ac, char **av)
 {
 	if (ac == 4)
 	{
-		printf("%s\n", ft_strnstr(av[1], av[2], atoi(av[3])));
+		ft_printf("%s\n", ft_strnstr(av[1], av[2], atoi(av[3])));
 	}
 	return (0);
 }*/

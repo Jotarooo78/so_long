@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:31:02 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/14 16:54:04 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int main(int ac, char **av)
 {
 	if (ac == 4)
 	{
-		printf("%s\n", (char *)ft_memcpy(av[1], av[2], atoi(av[3])));
-		printf("%s\n", (char *)memcpy(av[1], av[2], atoi(av[3])));
+		ft_printf("%s\n", (char *)ft_memcpy(av[1], av[2], atoi(av[3])));
+		ft_printf("%s\n", (char *)memcpy(av[1], av[2], atoi(av[3])));
 	}
 	return (0);
 }*/

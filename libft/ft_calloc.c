@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:33:05 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/28 17:43:25 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 // 	{
 // 		while (i < atoi(av[2]))
 // 		{
-// 			printf("%c\n", res[i]);
+// 			ft_printf("%c\n", res[i]);
 // 			i++;
 // 		}
 // 	}

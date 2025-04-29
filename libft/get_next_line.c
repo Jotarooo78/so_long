@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:50:20 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/16 15:59:47 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*get_next_line(int fd)
 // 	line = get_next_line(fd);
 // 	while (line != NULL)
 // 	{
-// 		printf(">%s", line);
+// 		ft_printf(">%s", line);
 // 		free(line);
 // 		line = get_next_line(fd);
 // 	}

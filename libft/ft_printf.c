@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:34:48 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/14 18:47:22 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:46:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	ft_printf(const char *str, ...)
 
 // int	main(void)
 // {
-// 	printf(" %p %p ", LONG_MIN, LONG_MAX);
-// 	printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
-// 	printf("\n");
+// 	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
+// 	ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
+// 	ft_printf("\n");
 // 	ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
 // 	ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
 // }

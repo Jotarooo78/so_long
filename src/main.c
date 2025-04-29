@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/28 18:06:46 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:34:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_map(char **map)
 			printf("Invalid map line at index %d\n", i);
 			break ;
 		}
-		printf("size : %d | %s\n", i, map[i]);
+		ft_printf("size : %d | %s\n", i, map[i]);
 		i++;
 	}
 }
@@ -73,14 +73,14 @@ int	main(int argc, char **argv)
 		if (data == NULL)
 			return (ft_putstr_fd("Failed to malloc data", 2), 1);
 		if (init_map(data, argv[1]) == false)
-			return (exit_game(data));
+			return (exit_game(data, 1));
 		if (init_game_data(data) == false)
-			return (exit_game(data));
+			return (exit_game(data, 1));
 		if (manage_init_texture(data) == false)
-			return (exit_game(data));
+			return (exit_game(data, 1));
 		init_move_input(data);
 		mlx_loop(data->mlx);
-		exit_game(data);
+		exit_game(data, 0);
 		return (0);
 	}
 	return (ft_putstr_fd("invalid number of argument\n", 2), 1);

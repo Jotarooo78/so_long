@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:04:50 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/14 18:32:53 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ size_t	ft_strlcat(char *dest, const char *src, size_t n)
 int	main(int ac, char **av)
 {
 		if (ac == 4)
-				printf("%d\n", ft_strlcat(av[1], av[2], atoi(av[3])));
+				ft_printf("%d\n", ft_strlcat(av[1], av[2], atoi(av[3])));
 		return (0);
 }*/

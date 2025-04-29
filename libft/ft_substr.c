@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:29:01 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/28 16:32:45 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 // 	if (!strncmp(ret, "", 1))
 // 	{
 // 	free(ret);
-// 	exit(printf("TEST_SUCCESS"));
+// 	exit(ft_printf("TEST_SUCCESS"));
 // 	}
 // 	free(ret);
-// 	exit(printf("TEST_FAILED"));
+// 	exit(ft_printf("TEST_FAILED"));
 // }
 // int	main(int ac, char **av)
 // {
@@ -56,7 +56,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 // 	res = ft_substr(av[1], atoi(av[2]), atoi(av[3]));
 // 	if (ac == 4)
 // 	{
-// 		printf("%s\n", res);
+// 		ft_printf("%s\n", res);
 // 	}
 // 	free(res);
 // 	return (0);

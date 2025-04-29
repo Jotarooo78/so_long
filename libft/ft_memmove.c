@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:13:42 by armosnie          #+#    #+#             */
-/*   Updated: 2024/11/28 19:00:49 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:32:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(void)
 {
 	char *src = "rem ipssum dolor sit a";
 	char dest[ft_strlen(src)];
-	printf("%s",(char *)memmove(src, dest, 8));
-	printf("%s\n",(char *)ft_memmove(src, dest, 8));
+	ft_printf("%s",(char *)memmove(src, dest, 8));
+	ft_printf("%s\n",(char *)ft_memmove(src, dest, 8));
 	if (src != ft_memmove(src, dest, 8))
 		write(1, "dest's adress was not returned\n", 31);
   write(1, dest, 22);
