@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/29 15:52:56 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/30 14:55:49 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ bool	check_extention(char *file)
 
 bool	init_game_data(t_game *data)
 {
-	int win_height;
-	int win_width;
+	int	win_height;
+	int	win_width;
 
 	win_height = data->map_y * 16;
 	win_width = data->map_x * 16;
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (ft_putstr_fd("Error\nFailed to init mlx", 2), false);
-	data->win = mlx_new_window(data->mlx, win_width , win_height, "so_long");
+	data->win = mlx_new_window(data->mlx, win_width, win_height, "so_long");
 	if (data->win == NULL)
 	{
 		mlx_destroy_display(data->mlx);

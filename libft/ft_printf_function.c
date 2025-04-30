@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_function.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:13:22 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/29 15:45:47 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/30 14:59:57 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	ft_unsigned_putnbr_base(unsigned long n, char *base, int baselen)
 
 	count = 0;
 	if (n >= (unsigned long)baselen)
-		count += ft_unsigned_putnbr_base((unsigned long)n / baselen, base, baselen);
+		count += ft_unsigned_putnbr_base((unsigned long)n / baselen, base,
+				baselen);
 	count += ft_putchar(base[n % baselen]);
 	return (count);
 }

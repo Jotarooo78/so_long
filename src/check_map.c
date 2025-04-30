@@ -15,12 +15,11 @@
 
 #include "../includes/so_long.h"
 
-
 bool	check_wall(char **map, int size)
 {
-	int x;
-	int y;
-	int len;
+	int		x;
+	int		y;
+	int		len;
 
 	y = 0;
 	while (y < size)
@@ -32,8 +31,8 @@ bool	check_wall(char **map, int size)
 			while (map[y][x])
 			{
 				if (map[y][x] != '1')
-					return (ft_putstr_fd("Error\ninvalid first or last wall\n", 2),
-						false);
+					return (ft_putstr_fd("Error\ninvalid first or last wall\n",
+							2), false);
 				x++;
 			}
 		}
@@ -46,9 +45,9 @@ bool	check_wall(char **map, int size)
 
 bool	check_parameters(t_game *data, char **map, int size)
 {
-	int x;
-	int y;
-	int len;
+	int		x;
+	int		y;
+	int		len;
 
 	y = 1;
 	len = ft_strlen(map[y]);
@@ -74,9 +73,9 @@ bool	check_parameters(t_game *data, char **map, int size)
 
 bool	check_rectangular_map(char **map, int size)
 {
-	int y;
-	int len_y;
-	int actual_len_y;
+	int		y;
+	int		len_y;
+	int		actual_len_y;
 
 	if (size < 3)
 		return (ft_putstr_fd("Error\nmap is too small\n", 2), false);
@@ -88,7 +87,8 @@ bool	check_rectangular_map(char **map, int size)
 		if (y + 1 < size && actual_len_y == len_y - 1)
 			return (true);
 		if (actual_len_y != len_y)
-			return (ft_putstr_fd("Error\nmap isn't a rectangular\n", 2), false);
+			return (ft_putstr_fd("Error\nmap isn't a rectangular\n", 2),
+				false);
 		y++;
 	}
 	return (true);
@@ -96,11 +96,11 @@ bool	check_rectangular_map(char **map, int size)
 
 bool	check_map(t_game *data)
 {
+	int		size;
+
 	data->collect = 0;
 	data->exit = 0;
 	data->player = 0;
-	int size;
-
 	size = get_x_y_size(data, data->map);
 	if (check_wall(data->map, size) == false)
 		return (false);

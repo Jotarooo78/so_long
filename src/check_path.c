@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:20 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/29 15:54:03 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/30 14:55:38 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	flood_fill(char **dup_map, t_game *data)
 
 bool	check_path(t_game *data, int size)
 {
-	char **dup_map;
+	char	**dup_map;
 
 	dup_map = duplicate_map(data->map, size);
 	if (dup_map == NULL)
