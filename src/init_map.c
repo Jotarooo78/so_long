@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/05/01 14:23:11 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:57:12 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ char	*join_map(char *str, int fd)
 		free(tmp);
 		tmp = new_tmp;
 		free(str);
+		if (ft_strlen(tmp) > 100)
+			return (free(tmp), ft_putstr_fd("Error\nwrong format map1\n", 2), NULL);
 		str = get_next_line(fd);
 	}
-	if (ft_strlen(tmp) > 100)
-		return (free(tmp), ft_putstr_fd("Error\nwrong format map1\n", 2), NULL);
 	if (check_double_backslash(tmp) == true)
 	{
 		free(tmp);
@@ -69,14 +69,14 @@ bool	init_map(t_game *data, char *filename)
 	if (tmp == NULL)
 	{
 		close(fd);
-		exit_game(data, 1);
+		return(false);
 	}
 	close(fd);
 	data->map = ft_split(tmp, '\n');
 	free(tmp);
 	if (data->map == NULL)
-		exit_game(data, 1);
+		return(false);
 	if (check_map(data) == false)
-		return (false);
+		return (free_array(data->map), false);
 	return (true);
 }
