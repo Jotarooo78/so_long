@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 14:34:19 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/30 14:55:43 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:23:11 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char	*join_map(char *str, int fd)
 		free(str);
 		str = get_next_line(fd);
 	}
+	if (ft_strlen(tmp) > 100)
+		return (free(tmp), ft_putstr_fd("Error\nwrong format map1\n", 2), NULL);
 	if (check_double_backslash(tmp) == true)
 	{
 		free(tmp);

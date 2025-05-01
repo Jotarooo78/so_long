@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/04/30 14:55:49 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:32:52 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 		if (data == NULL)
 			return (ft_putstr_fd("Error\nFailed to malloc data", 2), 1);
 		if (init_map(data, argv[1]) == false)
-			return (exit_game(data, 1));
+			return (free_array(data->map), free(data), 1);
 		if (init_game_data(data) == false)
 			return (exit_game(data, 1));
 		if (manage_init_texture(data) == false)

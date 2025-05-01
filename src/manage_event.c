@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:42:52 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/30 14:59:39 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:17:24 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	refresh_player_pos(t_game *data, int new_y, int new_x)
 		ft_printf("you did it (b ᵔ▽ᵔ)b\n");
 		exit_game(data, 0);
 	}
+	else if (data->map[new_y][new_x] == 'E')
+		return (display_map(data));
 	data->map[data->player_y][data->player_x] = '0';
 	data->player_x = new_x;
 	data->player_y = new_y;
