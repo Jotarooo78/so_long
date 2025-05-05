@@ -94,6 +94,29 @@ bool	check_rectangular_map(char **map, int size)
 	return (true);
 }
 
+bool	check_valid_char(char **map, int size)
+{
+	int		x;
+	int		y;
+	int		len;
+
+	y = 1;
+	len = ft_strlen(map[y]);
+	while (y + 1 < size)
+	{
+		x = 1;
+		while (x < len - 1)
+		{
+			if (!(map[y][x] == '1' || map[y][x] == '0' || map[y][x] == 'C' || map[y][x] == 'E' || map[y][x] == 'P'))
+				return (ft_putstr_fd("Error\nwrong char in map\n", 2), false);
+			x++;
+		}
+		y++;
+	}
+	return (true);
+}
+
+
 bool	check_map(t_game *data)
 {
 	int		size;
@@ -110,5 +133,7 @@ bool	check_map(t_game *data)
 		return (false);
 	if (check_path(data, size) == false)
 		return (false);
+	if (check_valid_char(data->map, size) == false)
+		return (false)
 	return (true);
 }

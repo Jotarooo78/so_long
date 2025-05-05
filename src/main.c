@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:42:56 by armosnie          #+#    #+#             */
-/*   Updated: 2025/05/01 14:54:59 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:38:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	main(int argc, char **argv)
 		init_move_input(data);
 		mlx_loop(data->mlx);
 		exit_game(data, 0);
-		return (0);
 	}
 	return (ft_putstr_fd("Error\ninvalid number of argument\n", 2), 1);
 }
